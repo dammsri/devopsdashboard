@@ -1,0 +1,246 @@
+@font-face {
+  font-family: 'SC Prosper Sans';
+  src: url('/fonts/sc-prosper-sans-light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SC Prosper Sans';
+  src: url('/fonts/sc-prosper-sans-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SC Prosper Sans';
+  src: url('/fonts/sc-prosper-sans-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SC Prosper Sans';
+  src: url('/fonts/sc-prosper-sans-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --sidebar-width: 260px;
+    --sidebar-collapsed: 68px;
+    --topbar-height: 64px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-100 text-slate-900 font-sans antialiased;
+  }
+
+  .dark body {
+    @apply bg-slate-950 text-slate-100;
+  }
+}
+
+@layer components {
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 dark:bg-slate-700 rounded-full;
+  }
+
+  /* ── Glass card ── */
+  .glass {
+    @apply bg-slate-50/80 dark:bg-slate-800/60 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50;
+  }
+
+  /* ── Stat card ── */
+  .stat-card {
+    @apply glass rounded-2xl p-5 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5;
+  }
+
+  /* ── Nav item ── */
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-brand-50 hover:text-brand-700 dark:hover:bg-brand-900/30 dark:hover:text-brand-300 transition-all duration-200 cursor-pointer;
+  }
+
+  .nav-item.active {
+    @apply bg-brand-100 text-brand-700 dark:bg-brand-900/40 dark:text-brand-300;
+  }
+
+  /* ── Btn primary ── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white text-sm font-semibold shadow-sm hover:shadow-brand-500/30 hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* ── Form input ── */
+  .form-input {
+    @apply block w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 px-4 py-3 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500 transition-all duration-200;
+  }
+
+  /* ── Badge ── */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+
+  .badge-success {
+    @apply bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400;
+  }
+
+  .badge-danger {
+    @apply bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-400;
+  }
+
+  .badge-warning {
+    @apply bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-400;
+  }
+
+  .badge-info {
+    @apply bg-sky-100 text-sky-700 dark:bg-sky-900/40 dark:text-sky-400;
+  }
+
+  .badge-purple {
+    @apply bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-400;
+  }
+
+  /* ── Robust Interlocking Honeycomb Grid ── */
+  .honeycomb-container {
+    width: 100%;
+    overflow-x: auto;
+    padding: 2rem 1rem 4rem 1rem;
+    scrollbar-width: thin;
+  }
+
+  .honeycomb-grid {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    margin: 0 auto;
+
+    --hex-w: clamp(80px, 8vw, 100px);
+    --hex-h: calc(var(--hex-w) * 0.866025);
+    padding-bottom: calc(var(--hex-h) * 0.5);
+    /* Safe space for the even column push down */
+  }
+
+  .honeycomb-row {
+    display: flex;
+    justify-content: flex-start;
+    /* MUST be flex-start so columns align dynamically */
+    padding: 0 calc(var(--hex-w) * 0.125);
+    /* Buffer for negative margins */
+  }
+
+  .honeycell {
+    flex: 0 0 var(--hex-w);
+    width: var(--hex-w);
+    height: var(--hex-h);
+    margin: 0 calc(var(--hex-w) * -0.125);
+    /* Mathematical overlap */
+    position: relative;
+    text-align: center;
+    z-index: 1;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .honeycell:nth-child(even) {
+    transform: translateY(calc(var(--hex-h) * 0.5));
+  }
+
+  .honeycell:hover {
+    transform: translateY(-4px) scale(1.05);
+    z-index: 10;
+  }
+
+  .honeycell:nth-child(even):hover {
+    transform: translateY(calc(var(--hex-h) * 0.5 - 4px)) scale(1.05);
+    z-index: 10;
+  }
+
+  /* Clip-Path for Flat-Top Hexagon */
+  .honeycell::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, theme("colors.brand.600"), theme("colors.scgreen.500"));
+    z-index: -1;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    transition: inset 0.3s ease;
+  }
+
+  .honeycell:hover::before {
+    background: linear-gradient(135deg, theme("colors.brand.500"), theme("colors.scgreen.400"));
+    box-shadow: 0 0 20px theme("colors.scgreen.500/50");
+    inset: -2px;
+  }
+
+  .honeycell-inner {
+    width: 100%;
+    height: 100%;
+    background-color: theme("colors.slate.50");
+    clip-path: polygon(25% 1px, 75% 1px, calc(100% - 1px) 50%, 75% calc(100% - 1px), 25% calc(100% - 1px), 1px 50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .dark .honeycell-inner {
+    background-color: theme("colors.slate.900");
+  }
+
+  .dark .honeycell:hover .honeycell-inner {
+    background-color: theme("colors.slate.800");
+  }
+
+  /* ── Fade-in animation (used across all pages) ── */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.35s ease-out both;
+  }
+
+  /* ── Hide scrollbar (utility) ── */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

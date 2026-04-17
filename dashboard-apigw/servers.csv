@@ -1,0 +1,4 @@
+itam_id,hostname,ip_address,username,password,environments,role,status,category
+17028,srv-dev-001,10.20.30.40,appadm,appadm1234,dev,Compute,Online,Non-Production
+17028,srv-dev-002,10.20.30.50,appadm,appadm1234,reg,Database,Online
+24608,srv-dev-002,10.20.30.50,appadm,appadm1234,dev,Database,Online,Production

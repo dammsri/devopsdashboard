@@ -1,0 +1,14 @@
+INFO:     Started server process [7095]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 48] error while attempting to bind on address ('0.0.0.0INFO:     127.0.0.1:49406 - "GET /cluster/cl-apac-01/services HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49572 - "GET /cluster/cl-apac-01/services HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49636 - "GET /cluster/cl-apac-01/services HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49692 - "GET /cluster/cl-apac-01/services HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49723 - "GET /cluster/cl-apac-01/services HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49786 - "GET /cluster/cl-apac-01/services HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61685 - "GET /cluster/cl-apac-01/services HTTP/1.1" 404 Not Found
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [7075]

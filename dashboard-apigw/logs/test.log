@@ -1,0 +1,1 @@
+{"timestamp": "2026-04-14T12:53:23.981785Z", "level": "INFO", "name": "test-service", "message": "Test log entry", "test_field": "value", "service": "api-gateway", "request_id": "system"}

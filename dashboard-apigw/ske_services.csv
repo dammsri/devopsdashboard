@@ -1,0 +1,7 @@
+ske_env_id,namespace,service_id,name,replicas,version,status
+cl-apac-01,default,auth-svc,Identity Service,3,v2.4.1,running
+cl-apac-01,payments,pay-gateway,Payment Gateway,5,v1.9.0,running
+cl-apac-01,default,redis-cache,Global Cache,1,v6.2,running
+cl-emea-02,default,auth-svc,Identity Service,2,v2.4.0,running
+cl-emea-02,logistics,shipping-api,Shipping API,3,v3.1.2,warning
+cl-us-03,default,dev-mock,Mock API service,1,latest,running

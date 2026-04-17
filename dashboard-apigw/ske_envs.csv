@@ -1,0 +1,4 @@
+ske_env_id,name,status
+cl-apac-01,APAC Production Alpha,Healthy
+cl-emea-02,EMEA Staging Beta,Healthy
+cl-us-03,US Development Gamma,Healthy

@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  dashboard-apigw:
+    build:
+      context: ./dashboard-apigw
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./devopsdashboard.db
+      - ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5173
+      - SECRET_KEY=changeme-super-secret-key-at-least-32-chars-long
+    volumes:
+      - apigw_data:/app/data
+
+  dashboard-frontend:
+    build:
+      context: ./dashboard-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - dashboard-apigw
+
+volumes:
+  apigw_data:

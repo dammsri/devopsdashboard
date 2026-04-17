@@ -1,0 +1,10 @@
+INFO:     Started server process [9585]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8002 (Press CTRL+C to quit)
+{"timestamp": "2026-04-16T18:59:48.559900Z", "level": "INFO", "name": "root", "message": "GET /health - 200", "method": "GET", "path": "/health", "status_code": 200, "duration_ms": 0.76, "payload": null, "service": "telemetry-ske", "request_id": "46fe5eba-3c47-4736-9345-60476dfb6d42"}
+INFO:     127.0.0.1:53865 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [9585]
